@@ -1,0 +1,30 @@
+.map-size__inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.map-size__input-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.map-size__label {
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+    text-align: right;
+}
+
+.map-size__input {
+    width: 65px;
+    margin-bottom: 10px;
+
+    text-align: center;
+
+    border: 2px solid black;
+    border-radius: 5px;
+
+    outline: none;
+}
