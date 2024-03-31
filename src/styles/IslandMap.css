@@ -1,0 +1,40 @@
+.island-map__inner {
+    width: max-content;
+    margin: 20px auto;
+}
+
+.island-table {
+    margin-bottom: 20px;
+
+    border-spacing: 0;
+}
+
+.island-table__td {
+    width: 32px;
+    height: 32px;
+
+    font-size: 9px;
+    text-align: center;
+
+    border: 1px solid black;
+}
+
+.island-table__water {
+    background-color: cornflowerblue;
+}
+
+.island-table__island {
+    background-color: forestgreen;
+}
+
+.island-table__airplane-path {
+    background-color: lightblue;
+}
+
+.island-map__answer {
+    text-align: center;
+}
+
+.island-map__error {
+    color: red;
+}
