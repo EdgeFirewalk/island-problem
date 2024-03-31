@@ -113,10 +113,10 @@ const IslandMap = ({ mapSize, islandMap }) => {
             const angle1 = Math.atan2(dy1, dx1) + 2 * Math.PI;
             const angle2 = Math.atan2(dy2, dx2) + 2 * Math.PI;
 
-            // Сортируем клетки по углам, чтобы получить их в порядке, идущем против часовой стрелки
-            if (angle1 < angle2) {
+            // Сортируем клетки по углам, чтобы получить их в порядке, идущем по часовой стрелке
+            if (angle1 > angle2) {
                 return -1;
-            } else if (angle1 > angle2) {
+            } else if (angle1 < angle2) {
                 return 1;
             } else {
                 // Если углы вдруг равны, то сортируем по расстоянию до центра масс
