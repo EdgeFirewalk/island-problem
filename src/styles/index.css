@@ -1,0 +1,21 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-size: 25px;
+    font-family: Calibri, sans-serif;
+}
+
+.container {
+    width: 100%;
+    max-width: 1330px;
+    margin: 0 auto;
+
+    /*border-right: 1px solid red;*/
+    /*border-left: 1px solid red;*/
+
+    overflow: auto;
+}
