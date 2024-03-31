@@ -8,7 +8,7 @@ const App = () => {
         N: 3,
         M: 3
     });
-    const [islandMap, setIslandMap] = useState(new Array(9).fill('.'));
+    const [islandMap, setIslandMap] = useState(Array(9).fill('.'));
 
     function setNewMapSize(newMap) {
         // По условию задачи N и M находятся в диапазоне от 3 до 100
@@ -18,10 +18,10 @@ const App = () => {
         // При вводе меньше 3 инпуты обведутся красным и карта для ввода не будет построена (см. MapBuilder)
         if (newMap.N > MAX) {
             setMapSize({ ...mapSize, N: MAX });
-            setIslandMap(new Array(MAX * newMap.M).fill('.'));
+            setIslandMap(Array(MAX * newMap.M).fill('.'));
         } else if (newMap.M > MAX) {
             setMapSize({ ...mapSize, M: MAX });
-            setIslandMap(new Array(newMap.N * MAX).fill('.'));
+            setIslandMap(Array(newMap.N * MAX).fill('.'));
         } else {
             setMapSize({
                 N: parseInt(newMap.N),
@@ -30,7 +30,7 @@ const App = () => {
 
             try {
                 // На случай, если из инпута прилетит NaN (в таком случае карта для ввода не отрисуется)
-                setIslandMap(new Array(newMap.N * newMap.M).fill('.'));
+                setIslandMap(Array(newMap.N * newMap.M).fill('.'));
             } catch {}
         }
     }
