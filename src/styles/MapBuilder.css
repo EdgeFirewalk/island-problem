@@ -1,0 +1,13 @@
+.map-builder__inner {
+    width: max-content;
+    margin: 0 auto;
+}
+
+.map-builder__cell {
+    width: 32px;
+    height: 32px;
+
+    text-align: center;
+
+    outline: none;
+}
