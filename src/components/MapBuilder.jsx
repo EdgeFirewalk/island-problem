@@ -2,8 +2,6 @@ import React from 'react';
 import '../styles/MapBuilder.css';
 
 const MapBuilder = ({ mapSize, islandMap, setIslandMap }) => {
-    let builtIslandMap = [];
-
     function buildInputMap(mapSize) {
         if (mapSize.N < 3 || mapSize.M < 3) {
             // Карта для ввода не будет отрисована, если был неверный ввод
