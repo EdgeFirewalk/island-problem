@@ -109,7 +109,7 @@ const IslandMap = ({ mapSize, islandMap }) => {
             const dx2 = b[0] - centerX;
             const dy2 = b[1] - centerY;
 
-            // Здесь считаются угла между линиями, соединящюими рассматриваемые клетки с центром масс
+            // Здесь считаются углы между линиями, соединящюими рассматриваемые клетки с центром масс
             const angle1 = Math.atan2(dy1, dx1) + 2 * Math.PI;
             const angle2 = Math.atan2(dy2, dx2) + 2 * Math.PI;
 
@@ -214,7 +214,7 @@ const IslandMap = ({ mapSize, islandMap }) => {
 
     function buildIslandMap() {
         // Сразу проверяем, есть ли на карте два острова или касается ли остров края карты
-        // И та, и другая ситуация недопустимы по условию задачи, поэтому если одна из них обнаружится, то соответствующий флаг
+        // И та и другая ситуация недопустимы по условию задачи, поэтому если одна из них обнаружится, то соответствующий флаг
         // станет равен true и покажется соответствующая ошибка
         if (hasTwoLands(twoDimIslandMap)) {
             hasTwoIslands = true;
@@ -227,7 +227,9 @@ const IslandMap = ({ mapSize, islandMap }) => {
 
         const pilotPath = findAdjacentWaterCells(twoDimIslandMap);
         pilotPath.length > 0 ? hasAnswer = true : hasAnswer = false;
+        answer = [];
         if (hasAnswer) {
+            answer.push(<p className="island-map__subtitle title">Ответ</p>);
             for (let i = 0; i < pilotPath.length; i++) {
                 // По условию задачи координаты в ответе начинаются с единицы, а не с нуля
                 answer.push(<p
@@ -277,6 +279,7 @@ const IslandMap = ({ mapSize, islandMap }) => {
         <div className="island-map">
             <div className="container">
                 <div className="island-map__inner">
+                    <p className="island-map__title title">Полученная карта</p>
                     {buildIslandMap()}
                     {hasAnswer ? answer : ''}
                     <p className="island-map__error">{hasTwoIslands ? 'Ошибка входных данных: На карте находится два острова.' : ''}</p>
