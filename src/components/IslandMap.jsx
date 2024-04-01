@@ -72,8 +72,12 @@ const IslandMap = ({ mapSize, islandMap }) => {
                             grid[nx][ny] === '.'
                         ) {
                             const key = `${nx},${ny}`;
-                            // По ключу проверяем, не были ли данная клетка уже добавлена в результат
-                            if (!result.some(cell => `${cell[0]},${cell[1]}` === key)) {
+                            // По ключу проверяем, не была ли данная клетка уже добавлена в результат
+                            if (
+                                !result.some(
+                                    (cell) => `${cell[0]},${cell[1]}` === key
+                                )
+                            ) {
                                 result.push([nx, ny]);
                             }
                         }
@@ -219,8 +223,7 @@ const IslandMap = ({ mapSize, islandMap }) => {
         if (hasTwoLands(twoDimIslandMap)) {
             hasTwoIslands = true;
             return;
-        }
-        else if (isLandTouchingSide(twoDimIslandMap)) {
+        } else if (isLandTouchingSide(twoDimIslandMap)) {
             isIslandTouchingSide = true;
             return;
         }
@@ -228,16 +231,21 @@ const IslandMap = ({ mapSize, islandMap }) => {
         // но не получилось...
 
         const pilotPath = findAdjacentWaterCells(twoDimIslandMap);
-        pilotPath.length > 0 ? hasAnswer = true : hasAnswer = false;
+        pilotPath.length > 0 ? (hasAnswer = true) : (hasAnswer = false);
         answer = []; // Обнуляем ответ, чтобы старый не показался при возникновении ошибки ввода размера карты
         if (hasAnswer) {
-            answer.push(<p key={-1} className="island-map__subtitle title">Ответ</p>);
+            answer.push(
+                <p key={-1} className="island-map__subtitle title">
+                    Ответ
+                </p>
+            );
             for (let i = 0; i < pilotPath.length; i++) {
                 // По условию задачи координаты в ответе начинаются с единицы, а не с нуля
-                answer.push(<p
-                    key={i}
-                    className="island-map__answer">{pilotPath[i][0] + 1} {pilotPath[i][1] + 1}
-                </p>);
+                answer.push(
+                    <p key={i} className="island-map__answer">
+                        {pilotPath[i][0] + 1} {pilotPath[i][1] + 1}
+                    </p>
+                );
             }
         }
 
@@ -254,14 +262,17 @@ const IslandMap = ({ mapSize, islandMap }) => {
                 }
 
                 // Если текущие координаты есть в координатах, найденных для пилота
-                if (pilotPath.some(cell => cell[0] === i && cell[1] === j)) { cellTypeClass = 'island-table__airplane-path'; }
+                if (pilotPath.some((cell) => cell[0] === i && cell[1] === j)) {
+                    cellTypeClass = 'island-table__airplane-path';
+                }
 
                 row.push(
                     <td
                         key={currentIndex}
                         className={'island-table__td ' + cellTypeClass}
                     >
-                        {i+1}, {j+1} {/* По условию задачи координаты начинаются с единицы, а не с нуля */}
+                        {i + 1}, {j + 1}{' '}
+                        {/* По условию задачи координаты начинаются с единицы, а не с нуля */}
                     </td>
                 );
                 currentIndex++;
@@ -284,8 +295,16 @@ const IslandMap = ({ mapSize, islandMap }) => {
                     <p className="island-map__title title">Полученная карта</p>
                     {buildIslandMap()}
                     {hasAnswer ? answer : ''}
-                    <p className="island-map__error">{hasTwoIslands ? 'Ошибка входных данных: На карте находится более одного острова.' : ''}</p>
-                    <p className="island-map__error">{isIslandTouchingSide ? 'Ошибка входных данных: Остров касается края карты.' : ''}</p>
+                    <p className="island-map__error">
+                        {hasTwoIslands
+                            ? 'Ошибка входных данных: На карте находится более одного острова.'
+                            : ''}
+                    </p>
+                    <p className="island-map__error">
+                        {isIslandTouchingSide
+                            ? 'Ошибка входных данных: Остров касается края карты.'
+                            : ''}
+                    </p>
                 </div>
             </div>
         </div>

@@ -6,7 +6,9 @@ const MapSizeInputs = ({ mapSize, setNewMapSize }) => {
         <div className="map-size">
             <div className="container">
                 <div className="map-size__inner">
-                    <p className="map-size__title title">Введите размеры карты и постройте остров</p>
+                    <p className="map-size__title title">
+                        Введите размеры карты и постройте остров
+                    </p>
                     <div className="map-size__inputs">
                         <div className="map-size__input-block">
                             <label htmlFor="N" className="map-size__label">
@@ -23,7 +25,10 @@ const MapSizeInputs = ({ mapSize, setNewMapSize }) => {
                                 type="text"
                                 value={mapSize.N}
                                 onChange={(e) =>
-                                    setNewMapSize({ ...mapSize, N: e.target.value })
+                                    setNewMapSize({
+                                        ...mapSize,
+                                        N: e.target.value
+                                    })
                                 }
                                 onFocus={(e) => e.target.select()}
                                 style={
@@ -38,7 +43,10 @@ const MapSizeInputs = ({ mapSize, setNewMapSize }) => {
                                 type="text"
                                 value={mapSize.M}
                                 onChange={(e) =>
-                                    setNewMapSize({ ...mapSize, M: e.target.value })
+                                    setNewMapSize({
+                                        ...mapSize,
+                                        M: e.target.value
+                                    })
                                 }
                                 onFocus={(e) => e.target.select()}
                                 style={
