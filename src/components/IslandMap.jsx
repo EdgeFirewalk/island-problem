@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../styles/IslandMap.css';
 
 const IslandMap = ({ mapSize, islandMap }) => {
@@ -224,12 +224,14 @@ const IslandMap = ({ mapSize, islandMap }) => {
             isIslandTouchingSide = true;
             return;
         }
+        // Ещё можно было бы проверять на то, есть ли внутри острова блоки с водой (что является ошибкой входных данных, вроде бы),
+        // но не получилось...
 
         const pilotPath = findAdjacentWaterCells(twoDimIslandMap);
         pilotPath.length > 0 ? hasAnswer = true : hasAnswer = false;
-        answer = [];
+        answer = []; // Обнуляем ответ, чтобы старый не показался при возникновении ошибки ввода размера карты
         if (hasAnswer) {
-            answer.push(<p className="island-map__subtitle title">Ответ</p>);
+            answer.push(<p key={-1} className="island-map__subtitle title">Ответ</p>);
             for (let i = 0; i < pilotPath.length; i++) {
                 // По условию задачи координаты в ответе начинаются с единицы, а не с нуля
                 answer.push(<p
@@ -282,7 +284,7 @@ const IslandMap = ({ mapSize, islandMap }) => {
                     <p className="island-map__title title">Полученная карта</p>
                     {buildIslandMap()}
                     {hasAnswer ? answer : ''}
-                    <p className="island-map__error">{hasTwoIslands ? 'Ошибка входных данных: На карте находится два острова.' : ''}</p>
+                    <p className="island-map__error">{hasTwoIslands ? 'Ошибка входных данных: На карте находится более одного острова.' : ''}</p>
                     <p className="island-map__error">{isIslandTouchingSide ? 'Ошибка входных данных: Остров касается края карты.' : ''}</p>
                 </div>
             </div>
